@@ -1,11 +1,11 @@
 import time
+from dados import carregar_tarefas, salvar_tarefas
 
 #fazer a interface do terminal
 print('-_-_-_-_-_-_-_- Task.Ly -_-_-_-_-_-_-_-')
 
 
-tarefas = []
-#-------------------------------------------------
+tarefas = carregar_tarefas() #ligação com o dados.py
 
 #funcoes para cada opção
 def op1(tarefas):
@@ -28,6 +28,7 @@ def op2(tarefas):
         "concluida": False
     })
 
+    salvar_tarefas(tarefas)
     print("Tarefa adicionada com SUCESSO\u2705 \n")
 
 def escolher_tarefa(tarefas):
@@ -58,6 +59,7 @@ def menu():
             else:
                 indice = escolher_tarefa(tarefas)
                 tarefas[indice]['concluída'] = True
+                salvar_tarefas(tarefas)
 
         if user_choice == 4:
             if not tarefas:
@@ -65,6 +67,7 @@ def menu():
             else:
                 indice = escolher_tarefa(tarefas)
                 tarefas.pop(indice)
+                salvar_tarefas(tarefas)
                 print('removido\n')
         if user_choice == 5:
             palavra = "Programa Encerrado com sucesso, tchau"
