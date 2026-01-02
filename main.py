@@ -1,13 +1,10 @@
 import time
-from dados import carregar_tarefas, salvar_tarefas
 
 #fazer a interface do terminal
 print('-_-_-_-_-_-_-_- Task.Ly -_-_-_-_-_-_-_-')
 
 
-#-------------------------------------------------
-        #funcao do json
-tarefas = carregar_tarefas()
+tarefas = []
 #-------------------------------------------------
 
 #funcoes para cada opção
@@ -31,7 +28,6 @@ def op2(tarefas):
         "concluida": False
     })
 
-    salvar_tarefas(tarefas)
     print("Tarefa adicionada com SUCESSO\u2705 \n")
 
 def escolher_tarefa(tarefas):
@@ -63,14 +59,12 @@ def menu():
                 indice = escolher_tarefa(tarefas)
                 tarefas[indice]['concluída'] = True
 
-                salvar_tarefas(tarefas)
         if user_choice == 4:
             if not tarefas:
                 print('Você não tem tarefas na agenda\n')
             else:
                 indice = escolher_tarefa(tarefas)
                 tarefas.pop(indice)
-                salvar_tarefas(tarefas)
                 print('removido\n')
         if user_choice == 5:
             palavra = "Programa Encerrado com sucesso, tchau"
